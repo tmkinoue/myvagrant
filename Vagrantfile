@@ -19,7 +19,7 @@ Vagrant.configure(2) do |config|
     node.vm.provider :virtualbox do |vb|
       vb.name = "ubuntu1604"
     end
-    node.vm.provision "shell",  inline: <<-SHELL
+    node.vm.provision "shell", privileged: true, inline: <<-SHELL
       apt-get update
       apt-get install -y whois python-setuptools
       useradd -p `echo vagrant | mkpasswd -s -m sha-512` -m -s '/bin/bash' vagrant
